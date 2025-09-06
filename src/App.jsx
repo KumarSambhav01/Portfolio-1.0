@@ -7,7 +7,7 @@ import { CustomCursor } from "./components/CustomCursor";
 import { Home } from "./components/section/Home";
 import { About } from "./components/section/About";
 import { Projects } from "./components/section/Project";
-import { Contact } from "./components/section/Contect";
+import { Contact } from "./components/section/Contact";
 import { Certificates } from "./components/section/Certificates";
 import { StarBackground } from "./components/StarBackground"; // ⭐ Add this
 import "./index.css";
@@ -70,7 +70,7 @@ function App() {
         <StarBackground />
 
         {/* Foreground content */}
-        <div className="relative z-10">
+        <div className="relative z-10 w-full max-w-full lg:max-w-7xl xl:max-w-8xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 xl:px-12">
           <CustomCursor />
           <Navbar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} />

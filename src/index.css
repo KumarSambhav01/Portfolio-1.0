@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* 🌍 Global Styles */
 html,
 body {
   margin: 0;
@@ -10,12 +11,124 @@ body {
   scroll-behavior: smooth;
 }
 
+/* 📱 Responsive Layout */
+@media (max-width: 640px) {
+  /* Mobile specific styles */
+  .custom-cursor {
+    display: none !important;
+  }
+  .cursor-trail {
+    display: none !important;
+  }
+  
+  /* Ensure proper spacing on very small screens */
+  section {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+  
+  /* Better text sizing for mobile */
+  h1, h2, h3 {
+    line-height: 1.2 !important;
+  }
+  
+  /* Improve button touch targets */
+  button, a[role="button"] {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  nav {
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+  }
+  .navbar-links {
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 12px !important;
+  }
+  .profile-section {
+    padding-top: 32px !important;
+    padding-bottom: 32px !important;
+    text-align: center !important;
+  }
+  .profile-img {
+    width: 96px !important;
+    height: 96px !important;
+    margin: 0 auto 16px auto !important;
+  }
+  .profile-title {
+    font-size: 1.8rem !important;
+    margin-bottom: 18px !important;
+  }
+  .profile-desc {
+    font-size: 1rem !important;
+    max-width: 95vw !important;
+    margin: 0 auto 18px auto !important;
+  }
+  .profile-buttons {
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100%;
+  }
+  .profile-buttons a {
+    width: 100%;
+    font-size: 1rem !important;
+    padding: 12px 0 !important;
+  }
+  .skills-row {
+    flex-direction: column !important;
+    gap: 18px !important;
+    overflow-x: visible !important;
+    padding-bottom: 0 !important;
+  }
+  .skills-card {
+    width: 100% !important;
+    margin: 0 auto 12px auto !important;
+    padding: 16px !important;
+  }
+  .education-section {
+    padding: 16px !important;
+  }
+  .education-timeline {
+    margin-left: 0 !important;
+    padding-left: 0 !important;
+  }
+  .education-timeline .ml-6 {
+    margin-left: 0 !important;
+  }
+}
+
+/* Tablet specific styles */
+@media (min-width: 641px) and (max-width: 1024px) {
+  /* Better spacing for tablet */
+  section {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  /* Adjust grid layouts for tablet */
+  .grid-cols-1.sm\\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1280px) {
+  /* Better spacing for large screens */
+  .max-w-6xl {
+    max-width: 80rem !important;
+  }
+}
+
+/* 🎬 Animations */
 @layer utilities {
   @keyframes blink {
     0%, 100% { opacity: 1; }
     50% { opacity: 0; }
   }
-
   .animate-blink {
     animation: blink 0.8s step-end infinite;
   }
@@ -24,56 +137,37 @@ body {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(250%); }
   }
-
   .animate-loading-bar {
     animation: loading 0.8s ease infinite;
   }
 
-  /* ✅ Hide scrollbars */
   .no-scrollbar::-webkit-scrollbar { display: none; }
   .no-scrollbar { 
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  /* ⭐ Twinkling + Falling Stars */
+  /* Stars */
   @keyframes pulse-subtle {
     0%, 100% { opacity: 0.6; }
     50% { opacity: 1; }
   }
-
-  @keyframes starFall {   /* ✅ Falling effect */
-    0% {
-      transform: translateY(0);
-      opacity: 0.9;
-    }
-    90% {
-      opacity: 0.9;
-    }
-    100% {
-      transform: translateY(120vh);  /* fall out of screen */
-      opacity: 0;
-    }
-  }
-
   .animate-pulse-subtle {
     animation: pulse-subtle 2s infinite alternate;
   }
 
-  .animate-starFall {   /* ✅ Combine twinkle + fall */
+  @keyframes starFall {
+    0% { transform: translateY(0); opacity: 0.9; }
+    90% { opacity: 0.9; }
+    100% { transform: translateY(120vh); opacity: 0; }
+  }
+  .animate-starFall {
     animation: starFall linear infinite;
   }
 
-  /* ☄ Shooting meteors */
   @keyframes meteor {
-    0% {
-      transform: translateX(0) translateY(0) rotate(45deg);
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(200px) translateY(200px) rotate(45deg);
-      opacity: 0;
-    }
+    0% { transform: translateX(0) translateY(0) rotate(45deg); opacity: 1; }
+    100% { transform: translateX(200px) translateY(200px) rotate(45deg); opacity: 0; }
   }
   .animate-meteor {
     position: absolute;
@@ -82,30 +176,29 @@ body {
   }
 }
 
-/* 🔥 Base classes */
+/* 🌟 Stars + Meteors */
 .star {
   position: absolute;
   border-radius: 50%;
   background: white;
 }
-
 .meteor {
   position: absolute;
   border-radius: 9999px;
 }
 
+/* 🎭 Scroll Reveal */
 .reveal {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
-
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* 🎯 Custom Cursor */
+/* 🖱 Custom Cursor */
 .custom-cursor {
   width: 20px;
   height: 20px;
@@ -117,13 +210,10 @@ body {
   transition: transform 0.1s ease;
   mix-blend-mode: difference;
 }
-
 .custom-cursor.hover {
   transform: scale(2);
   background: radial-gradient(circle, rgba(59, 130, 246, 1) 0%, rgba(59, 130, 246, 0.8) 50%, rgba(59, 130, 246, 0.4) 100%);
 }
-
-/* Cursor trail effect */
 .cursor-trail {
   width: 8px;
   height: 8px;
@@ -135,11 +225,11 @@ body {
   transition: all 0.3s ease;
 }
 
+/* Slide In */
 @keyframes slideInLeft {
   0% { opacity: 0; transform: translateX(-50px); }
   100% { opacity: 1; transform: translateX(0); }
 }
-
 .animate-slideInLeft {
   animation: slideInLeft 0.6s ease forwards;
 }
