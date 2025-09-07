@@ -11,14 +11,15 @@ export const Home = () => {
           <div className="mb-6 sm:mb-8">
             <div className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-4 sm:mb-6 rounded-full overflow-hidden border-4 border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.3)]">
               <img 
-                src={"/src/assets/profile photo.jpg"} 
-                alt="Kumar Sambhav" 
-                className="w-full h-full object-cover"
-                onError={(e) => {
-                  e.target.style.display = 'none';
-                  e.target.nextSibling.style.display = 'flex';
-                }}
-              />
+  src="/profile photo.jpg" 
+  alt="Kumar Sambhav" 
+  className="w-full h-full object-cover"
+  onError={(e) => {
+    e.target.style.display = 'none';
+    e.target.nextSibling.style.display = 'flex';
+  }}
+/>
+
               <div className="w-full h-full bg-gradient-to-br from-blue-500/20 to-cyan-400/20 flex items-center justify-center text-2xl sm:text-3xl md:text-4xl font-bold text-blue-400">
                 KS
               </div>
